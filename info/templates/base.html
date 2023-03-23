@@ -7,8 +7,6 @@
     </head>
     <body class="main_container">
     {% csrf_token %}
-        <img class="logo" src="{% static 'icons/logo.png'%}" alt="">
-        <img class="logo_text" src="{% static 'icons/logo_text.png'%}" alt="">
     {% block content %}{% endblock %}
     </body>
 </html>
