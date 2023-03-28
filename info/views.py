@@ -35,5 +35,14 @@ class Info250CoinsPage(ListView):
     # возвращает список данных, состоящий из словарей,
     # где каждый словарь - информация об одной криптомонете.
     # далее этот список используется в файле html в теге for
+
     def get_queryset(self):
+        search_query = self.request.GET.get('search_query')
+        if search_query:
+            filtered_list = list(
+                filter(lambda d: d.get('name').lower() in search_query.lower() or d.get(
+                    'symbol').lower() in search_query.lower(),
+                       get_crypto_data_from_coin_gecko(True)))
+            if filtered_list:
+                return filtered_list
         return get_crypto_data_from_coin_gecko(True)
