@@ -17,6 +17,20 @@
     <a class="button_log_in_out" href="{% url 'logout' %}">
         <p class="button_text">Выйти</p>
     </a>
+    <form class="search-form" method="GET" action="{% url 'info_250_coins' %}">
+        <input class="search" type="text" placeholder="&#128269;Имена/котировки" name="search_query" id="search_query">
+    </form>
+    <form class="sorting" id="sort" method="GET" action="{% url 'info_250_coins' %}">
+    <select class="dropdown" id="select" name="sorting">
+        <option class="dropdown-item" value="market_cap">Р-н капитализация</option>
+        <option class="dropdown-item" value="current_price">Цена</option>
+        <option class="dropdown-item" value="total_volume">Объём торгов</option>
+        <option class="dropdown-item" value="price_change_percentage_1h_in_currency">Изменения(1 ч.)</option>
+        <option class="dropdown-item" value="price_change_percentage_24h">Изменения(24 ч.)</option>
+        <option class="dropdown-item" value="price_change_percentage_7d_in_currency">Изменения(7 д.)</option>
+    </select>
+    <input class="sorting-button" type="submit" value="Сортировать">
+</form>
     <div class="table_form">
         <p class="table_text">Валюта</p>
         <p class="table_text">Текущая цена</p>
@@ -25,9 +39,6 @@
         <p class="table_text">Изменения<br>(24 ч.)</p>
         <p class="table_text">Изменения<br>(7 д.)</p>
     </div>
-    <form method="GET" action="{% url 'info_250_coins' %}">
-        <input class="search" type="text" placeholder="&#128269;Имена/котировки" name="search_query" id="search_query">
-    </form>
         <div class="info">
             {% for info in crypto_info %}
                 <div class="form">

@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, ListView
 from django.shortcuts import redirect
 from django.urls import reverse
 from .services.business_logic import get_crypto_data_from_coin_gecko
+from django.shortcuts import render
 
 
 class WelcomePage(TemplateView):
@@ -25,6 +26,7 @@ class Info250CoinsPage(ListView):
     context_object_name = "crypto_info"
     paginate_by = 25
 
+
     # функция не позволяет открыть страницу, если пользовать не авторизирован
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -42,7 +44,11 @@ class Info250CoinsPage(ListView):
             filtered_list = list(
                 filter(lambda d: d.get('name').lower() in search_query.lower() or d.get(
                     'symbol').lower() in search_query.lower(),
-                       get_crypto_data_from_coin_gecko(True)))
+                       get_crypto_data_from_coin_gecko(True, 'market_cap')))
             if filtered_list:
                 return filtered_list
-        return get_crypto_data_from_coin_gecko(True)
+        sorting = self.request.GET.get('sorting')
+        if sorting:
+            return get_crypto_data_from_coin_gecko(True, sorting)
+        return get_crypto_data_from_coin_gecko(True, 'market_cap')
+
