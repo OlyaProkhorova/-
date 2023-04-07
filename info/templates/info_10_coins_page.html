@@ -19,8 +19,12 @@
     <a class="sign_up_button" href="{% url 'signup'%}">
         <p class="button_text">Зарегистрироваться</p>
     </a>
+    <!-- контейнер info будет включать в себя 10 форм со значениями-->
     <div class="info">
+        <!-- crypto_info - список, состоящий из словарей, где
+        info - отдельный словарь, хранящий информацию об одной монете-->
         {% for info in crypto_info%}
+        <!--каждая форма - отдельный квадратик с информацией о монете-->
             <div class="form">
                 <div class="crypto_info">
                         <p class="coin_name">{{info.name}}</p>

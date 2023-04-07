@@ -13,19 +13,21 @@ class Info10CoinsPage(ListView):
     # по этому имени мы будем обращаться к этому списку в html файле
     context_object_name = "crypto_info"
 
-    # если пользователь авторизирован, то он может попасть
-    # только на info_250_coins_page и welcome_page, на
-    # info_10_coins_page попасть не может
+    """если пользователь авторизирован, то он может попасть
+    только на info_250_coins_page и welcome_page, на
+    info_10_coins_page попасть не может"""
+
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect(reverse('welcome_page'))
         return super().dispatch(request, *args, **kwargs)
 
-    # возвращает список данных, состоящий из словарей,
-    # где каждый словарь - информация об одной криптомонете.
-    # далее этот список используется в файле html в теге for
-    # False возвращает список 10 монет
-    # True возвращает список 250 монет
+    """возвращает список данных, состоящий из словарей,
+    где каждый словарь - информация об одной криптомонете.
+    далее этот список используется в файле html в теге for
+    False возвращает список 10 монет
+    True возвращает список 250 монет"""
+
     def get_queryset(self):
         return get_crypto_data_from_coin_gecko(False)
 
@@ -36,15 +38,14 @@ class Info250CoinsPage(ListView):
     # количество монет на одной странице
     paginate_by = 25
 
+    """функция не позволяет открыть страницу info_250_coins_page,
+    если пользователь не авторизирован"""
 
-    # функция не позволяет открыть страницу info_250_coins_page,
-    # если пользователь не авторизирован
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             # reverse позволяет использовать сокращенное имя, а не путь
             return redirect(reverse('welcome_page'))
         return super().dispatch(request, *args, **kwargs)
-
 
     def get_queryset(self):
         search_query = self.request.GET.get('search_query')
@@ -59,4 +60,3 @@ class Info250CoinsPage(ListView):
         if sorting:
             return get_crypto_data_from_coin_gecko(True, sorting)
         return get_crypto_data_from_coin_gecko(True, 'market_cap')
-

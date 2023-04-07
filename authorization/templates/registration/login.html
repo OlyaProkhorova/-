@@ -2,15 +2,13 @@
 {% load static %}
 {% block title %}Войти{% endblock %}
 {% block links %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/login_page_styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/common_login_signup_styles.css' %}">
     <link rel="icon" href="{% static 'icons/icon_logo.png' %}">
 {% endblock %}
 {% block content %}
     <form method="post">
+        <!--защита от межсайтовых атак-->
         {% csrf_token %}
         <img class="logo" src="{% static 'icons/logo.png' %}"/>
         <label for="username">Имя пользователя</label>

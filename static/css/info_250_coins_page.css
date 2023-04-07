@@ -10,7 +10,7 @@
     right: 200px;
 }
 
-.search-form{
+.search-form {
     position: absolute;
     top: 26%;
     left: 6%;
@@ -36,7 +36,7 @@
     box-shadow: 0 0 5px #dc9200;
 }
 
-.sorting{
+.sorting {
     position: absolute;
     top: 26%;
     right: 6%;
@@ -44,7 +44,7 @@
     height: 40px;
 }
 
-.dropdown{
+.dropdown {
     height: 100%;
     background: none;
     border: 2px solid #de9701;
@@ -54,12 +54,12 @@
     margin-right: 20px;
 }
 
-.dropdown:hover{
+.dropdown:hover {
     box-shadow: 0 0 5px #de9701;
     transition: 0.3s;
 }
 
-.sorting-button{
+.sorting-button {
     background: none;
     border-radius: 5px;
     border: 2px solid #de9701;
@@ -68,12 +68,12 @@
     height: 100%;
 }
 
-.sorting-button:hover{
+.sorting-button:hover {
     box-shadow: 0 0 5px #de9701;
     transition: 0.3s;
 }
 
-.dropdown-item{
+.dropdown-item {
     background-color: #3A3A3A;
 }
 
@@ -120,7 +120,7 @@
     margin-bottom: 1%;
 }
 
-.form:hover{
+.form:hover {
     transform: scale(1.04);
     transition: 0.3s;
 }
@@ -162,7 +162,7 @@
     line-height: 168px;
 }
 
-.volume{
+.volume {
     border-right: 2px solid #3A3A3A;
     color: #EBEBEB;
     text-align: center;
@@ -191,6 +191,8 @@
 }
 
 .pagination {
+    font-family: Arial;
+    font-size: 28px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -211,13 +213,13 @@
     border-radius: 3px;
 }
 
-.page-link:hover{
+.page-link:hover {
     border: 1px solid #de9701;
     transform: scale(1.1);
     transition: 0.2s;
 }
 
-.current-page{
+.current-page {
     color: #de9701;
     display: inline-block;
     padding: 10px;
@@ -225,7 +227,8 @@
     box-shadow: 0 0 4px #de9701;
     border-radius: 3px;
 }
-.current-page:hover{
+
+.current-page:hover {
     transform: scale(1.1);
     transition: 0.2s;
 }
